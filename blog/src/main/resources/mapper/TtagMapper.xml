@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.xuexiblog.blog.dao.TtagMapper">
+  <resultMap id="BaseResultMap" type="xyz.xuexiblog.blog.pojp.Ttag">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <resultMap id="BaseResultMap1" type="xyz.xuexiblog.blog.pojp.Ttag">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <association property="tblog" javaType="xyz.xuexiblog.blog.pojp.Tblog">
+      <id column="id" jdbcType="BIGINT" property="id" />
+      <result column="appreciation" jdbcType="BIT" property="appreciation" />
+      <result column="commentabled" jdbcType="BIT" property="commentabled" />
+      <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+      <result column="description" jdbcType="VARCHAR" property="description" />
+      <result column="first_picture" jdbcType="VARCHAR" property="firstPicture" />
+      <result column="flag" jdbcType="VARCHAR" property="flag" />
+      <result column="published" jdbcType="BIT" property="published" />
+      <result column="recommend" jdbcType="BIT" property="recommend" />
+      <result column="share_statement" jdbcType="BIT" property="shareStatement" />
+      <result column="title" jdbcType="VARCHAR" property="title" />
+      <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+      <result column="views" jdbcType="INTEGER" property="views" />
+      <result column="type_id" jdbcType="BIGINT" property="typeId" />
+      <result column="user_id" jdbcType="BIGINT" property="userId" />
+    </association>
+    <association property="tuser" javaType="xyz.xuexiblog.blog.pojp.Tuser">
+      <id column="id" jdbcType="BIGINT" property="id" />
+      <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+      <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+      <result column="email" jdbcType="VARCHAR" property="email" />
+      <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+      <result column="password" jdbcType="VARCHAR" property="password" />
+      <result column="type" jdbcType="INTEGER" property="type" />
+      <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+      <result column="username" jdbcType="VARCHAR" property="username" />
+      <result column="img" jdbcType="VARCHAR" property="img" />
+      <result column="Identity" jdbcType="INTEGER" property="identity" />
+      <result column="phone" jdbcType="VARCHAR" property="phone" />
+      <result column="gender" jdbcType="INTEGER" property="gender" />
+      <result column="favor" jdbcType="VARCHAR" property="favor" />
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_tag
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+    <select id="selectAll" resultType="xyz.xuexiblog.blog.pojp.Ttag">
+      select
+      <include refid="Base_Column_List"/>
+      from t_tag
+    </select>
+  <select id="selectByBlog" resultType="java.lang.Integer">
+    select
+    count(*)
+    from t_blog_tags tg , t_blog tb
+    where tb.id=tg.blogs_id
+  </select>
+  <select id="selectAllByTagId" parameterType="xyz.xuexiblog.blog.util.Page" resultMap="BaseResultMap1">
+SELECT
+  tb.*,
+  ta.*,
+  tu.*,
+  tas.*
+FROM
+  t_blog tb,
+  t_tag ta,
+  t_user tu,
+  t_blog_tags tas
+WHERE tb.`user_id` = tu.`id`
+  AND tb.`id` = tas.`blogs_id`
+  AND tas.`tags_id` = ta.`id`
+  <if test="taid != null">
+    and ta.id=#{id}
+  </if>
+   limit #{currentPage},#{currentCount}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_tag
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="xyz.xuexiblog.blog.pojp.Ttag">
+    insert into t_tag (id, name)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="xyz.xuexiblog.blog.pojp.Ttag">
+    insert into t_tag
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="xyz.xuexiblog.blog.pojp.Ttag">
+    update t_tag
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="xyz.xuexiblog.blog.pojp.Ttag">
+    update t_tag
+    set name = #{name,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

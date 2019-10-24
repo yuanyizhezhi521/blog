@@ -1,0 +1,18 @@
+server:
+  port: 8086
+#数据库连接
+spring:
+  datasource:
+    url:  jdbc:mysql://118.190.183.69:3306/blog?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    username:  root
+    password:  ROOT123456$
+    driver-class-name:  com.mysql.jdbc.Driver
+#showSql
+logging:
+  level:
+    root: warn
+    xyz:
+      xuexiblog:
+        blog:
+          dao: info
+  file: log/imcoding-pro.log

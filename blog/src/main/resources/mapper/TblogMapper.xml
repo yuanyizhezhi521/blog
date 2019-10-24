@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.xuexiblog.blog.dao.TblogMapper">
+  <resultMap id="BaseResultMap" type="xyz.xuexiblog.blog.pojp.Tblog">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="appreciation" jdbcType="BIT" property="appreciation" />
+    <result column="commentabled" jdbcType="BIT" property="commentabled" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="first_picture" jdbcType="VARCHAR" property="firstPicture" />
+    <result column="flag" jdbcType="VARCHAR" property="flag" />
+    <result column="published" jdbcType="BIT" property="published" />
+    <result column="recommend" jdbcType="BIT" property="recommend" />
+    <result column="share_statement" jdbcType="BIT" property="shareStatement" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="views" jdbcType="INTEGER" property="views" />
+    <result column="type_id" jdbcType="BIGINT" property="typeId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="xyz.xuexiblog.blog.pojp.Tblog">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <resultMap id="BaseResultMap1" type="xyz.xuexiblog.blog.pojp.Tblog">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="appreciation" jdbcType="BIT" property="appreciation" />
+    <result column="commentabled" jdbcType="BIT" property="commentabled" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="first_picture" jdbcType="VARCHAR" property="firstPicture" />
+    <result column="flag" jdbcType="VARCHAR" property="flag" />
+    <result column="published" jdbcType="BIT" property="published" />
+    <result column="recommend" jdbcType="BIT" property="recommend" />
+    <result column="share_statement" jdbcType="BIT" property="shareStatement" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="views" jdbcType="INTEGER" property="views" />
+    <result column="type_id" jdbcType="BIGINT" property="typeId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <association property="ttype" javaType="xyz.xuexiblog.blog.pojp.Ttype">
+      <id column="id" jdbcType="BIGINT" property="id" />
+      <result column="name" jdbcType="VARCHAR" property="name" />
+    </association>
+  </resultMap>
+  <resultMap id="BaseResultMap2" type="xyz.xuexiblog.blog.pojp.Tblog">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="appreciation" jdbcType="BIT" property="appreciation" />
+    <result column="commentabled" jdbcType="BIT" property="commentabled" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="first_picture" jdbcType="VARCHAR" property="firstPicture" />
+    <result column="flag" jdbcType="VARCHAR" property="flag" />
+    <result column="published" jdbcType="BIT" property="published" />
+    <result column="recommend" jdbcType="BIT" property="recommend" />
+    <result column="share_statement" jdbcType="BIT" property="shareStatement" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="views" jdbcType="INTEGER" property="views" />
+    <result column="type_id" jdbcType="BIGINT" property="typeId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <association property="ttype" javaType="xyz.xuexiblog.blog.pojp.Ttype">
+      <id column="id" jdbcType="BIGINT" property="id" />
+      <result column="name" jdbcType="VARCHAR" property="name" />
+    </association>
+    <association property="tuser" javaType="xyz.xuexiblog.blog.pojp.Tuser">
+      <id column="id" jdbcType="BIGINT" property="id" />
+      <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+      <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+      <result column="email" jdbcType="VARCHAR" property="email" />
+      <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+      <result column="password" jdbcType="VARCHAR" property="password" />
+      <result column="type" jdbcType="INTEGER" property="type" />
+      <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+      <result column="username" jdbcType="VARCHAR" property="username" />
+      <result column="img" jdbcType="VARCHAR" property="img" />
+      <result column="Identity" jdbcType="INTEGER" property="identity" />
+      <result column="phone" jdbcType="VARCHAR" property="phone" />
+      <result column="gender" jdbcType="INTEGER" property="gender" />
+      <result column="favor" jdbcType="VARCHAR" property="favor" />
+    </association>
+  </resultMap>
+
+  <resultMap id="BaseResultMap3" type="xyz.xuexiblog.blog.pojp.Tblog">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="appreciation" jdbcType="BIT" property="appreciation" />
+    <result column="commentabled" jdbcType="BIT" property="commentabled" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="first_picture" jdbcType="VARCHAR" property="firstPicture" />
+    <result column="flag" jdbcType="VARCHAR" property="flag" />
+    <result column="published" jdbcType="BIT" property="published" />
+    <result column="recommend" jdbcType="BIT" property="recommend" />
+    <result column="share_statement" jdbcType="BIT" property="shareStatement" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="views" jdbcType="INTEGER" property="views" />
+    <result column="type_id" jdbcType="BIGINT" property="typeId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    <association property="ttag" javaType="xyz.xuexiblog.blog.pojp.Ttag">
+      <id column="id" jdbcType="BIGINT" property="id" />
+      <result column="name" jdbcType="VARCHAR" property="name" />
+    </association>
+    <association property="tuser" javaType="xyz.xuexiblog.blog.pojp.Tuser">
+      <id column="id" jdbcType="BIGINT" property="id" />
+      <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+      <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+      <result column="email" jdbcType="VARCHAR" property="email" />
+      <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+      <result column="password" jdbcType="VARCHAR" property="password" />
+      <result column="type" jdbcType="INTEGER" property="type" />
+      <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+      <result column="username" jdbcType="VARCHAR" property="username" />
+      <result column="img" jdbcType="VARCHAR" property="img" />
+      <result column="Identity" jdbcType="INTEGER" property="identity" />
+      <result column="phone" jdbcType="VARCHAR" property="phone" />
+      <result column="gender" jdbcType="INTEGER" property="gender" />
+      <result column="favor" jdbcType="VARCHAR" property="favor" />
+    </association>
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, appreciation, commentabled, create_time, description, first_picture, flag, published, 
+    recommend, share_statement, title, update_time, views, type_id, user_id
+  </sql>
+  <sql id="Base_Column_List2">
+    id, appreciation, commentabled, create_time, description, first_picture, flag, published,
+    recommend, share_statement, title, views, type_id, user_id
+  </sql>
+  <sql id="Base_Column_List1">
+    t.id, t.appreciation, t.commentabled, t.create_time, t.description, t.first_picture, t.flag, t.published,
+    t.recommend, t.share_statement, t.title, t.update_time, t.views, t.type_id, t.user_id   </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <sql id="Blob_Column_List1">
+    content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap3">
+    SELECT
+     t.id, t.appreciation, t.commentabled, t.create_time, t.description, t.first_picture, t.flag, t.published,
+    t.recommend, t.share_statement, t.title, t.update_time, t.views, t.type_id, t.user_id,
+    content,
+     type_id, user_id, ta.id,ta.name,tu.*
+
+    FROM
+     t_blog t
+     ,t_user tu,
+    t_type ta
+    WHERE
+    t.`type_id`=ta.`id`
+     AND t.`user_id`=tu.`id`
+    AND
+    t.id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_blog
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="xyz.xuexiblog.blog.pojp.Tblog">
+    insert into t_blog ( appreciation, commentabled,
+      create_time, description, first_picture, 
+      flag, published, recommend, 
+      share_statement, title, update_time, 
+      views, type_id, user_id, 
+      content)
+    values ( #{appreciation,jdbcType=BIT}, #{commentabled,jdbcType=BIT},
+      #{createTime,jdbcType=TIMESTAMP}, #{description,jdbcType=VARCHAR}, #{firstPicture,jdbcType=VARCHAR}, 
+      #{flag,jdbcType=VARCHAR}, #{published,jdbcType=BIT}, #{recommend,jdbcType=BIT}, 
+      #{shareStatement,jdbcType=BIT}, #{title,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{views,jdbcType=INTEGER}, #{typeId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="xyz.xuexiblog.blog.pojp.Tblog">
+    insert into t_blog
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="appreciation != null">
+        appreciation,
+      </if>
+      <if test="commentabled != null">
+        commentabled,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="firstPicture != null">
+        first_picture,
+      </if>
+      <if test="flag != null">
+        flag,
+      </if>
+      <if test="published != null">
+        published,
+      </if>
+      <if test="recommend != null">
+        recommend,
+      </if>
+      <if test="shareStatement != null">
+        share_statement,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="views != null">
+        views,
+      </if>
+      <if test="typeId != null">
+        type_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="appreciation != null">
+        #{appreciation,jdbcType=BIT},
+      </if>
+      <if test="commentabled != null">
+        #{commentabled,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="firstPicture != null">
+        #{firstPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="published != null">
+        #{published,jdbcType=BIT},
+      </if>
+      <if test="recommend != null">
+        #{recommend,jdbcType=BIT},
+      </if>
+      <if test="shareStatement != null">
+        #{shareStatement,jdbcType=BIT},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="views != null">
+        #{views,jdbcType=INTEGER},
+      </if>
+      <if test="typeId != null">
+        #{typeId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="xyz.xuexiblog.blog.pojp.Tblog">
+    update t_blog
+    <set>
+      <if test="appreciation != null">
+        appreciation = #{appreciation,jdbcType=BIT},
+      </if>
+      <if test="commentabled != null">
+        commentabled = #{commentabled,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="firstPicture != null">
+        first_picture = #{firstPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="published != null">
+        published = #{published,jdbcType=BIT},
+      </if>
+      <if test="recommend != null">
+        recommend = #{recommend,jdbcType=BIT},
+      </if>
+      <if test="shareStatement != null">
+        share_statement = #{shareStatement,jdbcType=BIT},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="views != null">
+        views = #{views,jdbcType=INTEGER},
+      </if>
+      <if test="typeId != null">
+        type_id = #{typeId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="xyz.xuexiblog.blog.pojp.Tblog">
+    update t_blog
+    set appreciation = #{appreciation,jdbcType=BIT},
+      commentabled = #{commentabled,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      description = #{description,jdbcType=VARCHAR},
+      first_picture = #{firstPicture,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR},
+      published = #{published,jdbcType=BIT},
+      recommend = #{recommend,jdbcType=BIT},
+      share_statement = #{shareStatement,jdbcType=BIT},
+      title = #{title,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      views = #{views,jdbcType=INTEGER},
+      type_id = #{typeId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="xyz.xuexiblog.blog.pojp.Tblog">
+    update t_blog
+    set appreciation = #{appreciation,jdbcType=BIT},
+      commentabled = #{commentabled,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      description = #{description,jdbcType=VARCHAR},
+      first_picture = #{firstPicture,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR},
+      published = #{published,jdbcType=BIT},
+      recommend = #{recommend,jdbcType=BIT},
+      share_statement = #{shareStatement,jdbcType=BIT},
+      title = #{title,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      views = #{views,jdbcType=INTEGER},
+      type_id = #{typeId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectAll" resultMap="BaseResultMap2">
+    SELECT
+    <include refid="Base_Column_List1" />
+    , type_id, user_id, content, ty.id,ty.name,tu.*
+    FROM t_blog t , t_user tu ,t_type ty
+    WHERE t.`type_id`=ty.`id` AND t.`user_id`=tu.`id` order by t.create_time desc
+  </select>
+  <select id="selectAllOrText" resultType="xyz.xuexiblog.blog.pojp.Tblog">
+    select id, appreciation, commentabled, create_time, description, first_picture, flag,
+    published, recommend, share_statement, title, update_time, views, type_id, user_id,
+    content from t_blog
+    <where>
+      <if test="#{text!=null}">
+
+      </if>
+    </where>
+  </select>
+  <select id="selectcount" resultType="java.lang.Integer" >
+    select count(*) from t_blog
+    </select>
+
+  <select id="selectByBlogId" resultMap="BaseResultMap2" >
+    select count(*) from t_blog
+    </select>
+  <select id="selectByUserId" resultType="xyz.xuexiblog.blog.pojp.Tblog">
+    select
+    <include refid="Base_Column_List" />
+    from t_blog where user_id=#{userId}
+  </select>
+    <select id="selectByName" resultType="xyz.xuexiblog.blog.pojp.Tblog">
+      select id from t_blog where description=#{name}
+    </select>
+  <select id="selectYer" resultType="java.lang.String">
+     SELECT DISTINCT DATE_FORMAT(t.update_time,'%Y')  FROM t_blog t ;
+
+  </select>
+  <select id="selectTime" resultType="xyz.xuexiblog.blog.pojp.Tblog">
+        SELECT
+        *
+        FROM t_blog  order by create_time desc;
+
+  </select>
+  <select id="selecttitle"  resultMap="BaseResultMap2">
+    SELECT
+    tb.*,
+    ty.*,
+    tu.*
+    FROM
+    t_blog tb,
+    t_type ty,
+    t_user tu
+    WHERE tb.type_id = ty.id
+    AND tb.`user_id` = tu.`id`
+    <if test="query!=null">
+      and tb.title like concat('%',#{query},'%')
+    </if>
+    limit #{currentPage},#{currentCount}
+
+  </select>
+  <select id="selectRecommend" resultType="xyz.xuexiblog.blog.pojp.Tblog">
+SELECT * FROM t_blog   ORDER BY update_time DESC LIMIT 0,5
+  </select>
+</mapper>
