@@ -23,7 +23,7 @@ public class TcommentController {
     TblogService tblogService;
     @RequestMapping(value = "comments")
     @ResponseBody
-    public String tcommeInsert(Tcomment tcomment, HttpSession session, HttpServletRequest request){
+    public HttpServletRequest tcommeInsert(Tcomment tcomment, HttpSession session, HttpServletRequest request){
         tcomment.setCreateTime(new Date());
         String parameter = request.getParameter("blog.id");
         String parameter1 = request.getParameter("parentCommentId");
@@ -51,10 +51,14 @@ public class TcommentController {
         List<Tcomment> tcomments = tcommentService.selectblogId(blogid);
 
         if (insert>0){
-            return "forward:/blog/id="+blogid;
+            List<Tcomment> tcomments1 = tcommentService.selectblogId(blogid);
+            List<Tcomment> parent_comment_id= tcommentService.selectparent_comment_id(blogid);
+            request.setAttribute("comments",tcomments1);
+            request.setAttribute("replyComments",parent_comment_id);
+            return request;
         }else {
             request.setAttribute("msge","网络出现波动或服务器君发呆了");
-            return "";
+            return request;
         }
 
     }

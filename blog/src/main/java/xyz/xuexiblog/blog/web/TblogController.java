@@ -176,9 +176,9 @@ public class TblogController {
         model.addAttribute("blog",tblog1);
         model.addAttribute("tags",ttags);
         List<Tcomment> tcomments1 = tcommentService.selectblogId(id);
-        List<Tcomment> selectparent = tcommentService.selectparent(id);
+        List<Tcomment> parent_comment_id= tcommentService.selectparent_comment_id(id);
         model.addAttribute("comments",tcomments1);
-        model.addAttribute("replyComments",selectparent);
+        model.addAttribute("replyComments",parent_comment_id);
     }
 
 

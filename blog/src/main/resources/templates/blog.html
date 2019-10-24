@@ -495,7 +495,9 @@ h5,h6{font-size:1em;}
                   How artistic!
                 </div>
                 <div class="actions">
-                  <a class="reply" data-commentid="1" data-commentnickname="Matt" th:attr="data-commentid=${comment.id},data-commentnickname=${comment.nickname}" onclick="reply(this)">回复</a>
+                  <a class="reply" data-commentid="1" data-commentnickname="Matt" th:attr="data-commentid=${comment.id},data-commentnickname=${comment.nickname}" onclick="reply(this)">回复
+                  <input type="hidden" name="parentCommentId"   th:value="${comment.id}">
+                  </a>
                 </div>
               </div>
               <div class="comments" th:if="${#arrays.length(replyComments)}>0">
@@ -507,7 +509,7 @@ h5,h6{font-size:1em;}
                     <a class="author" >
                       <span th:text="${reply.nickname}">小红</span>
                       <div class="ui mini basic teal left pointing label m-padded-mini" th:if="${reply.adminComment}">博主</div>
-                      &nbsp;<span th:text="|@ ${reply.parentComment.nickname}|" class="m-teal">@ 小白</span>
+                      &nbsp;<span th:text="|@ ${reply.user.nickname}|" class="m-teal">@ 小白</span>
                     </a>
                     <div class="metadata">
                       <span class="date" th:text="${#dates.format(reply.createTime,'yyyy-MM-dd HH:mm')}">Today at 5:42PM</span>
@@ -626,7 +628,7 @@ h5,h6{font-size:1em;}
 </div>
 
 <div id="qrcode" class="ui wechat-qr flowing popup transition hidden "style="width: 130px !important;">
-  <!--<img src="./static/images/wechat.jpg" alt="" class="ui rounded image" style="width: 120px !important;">-->
+  <img src="./static/images/wechat.jpg" alt="" class="ui rounded image" style="width: 120px !important;">
 </div>
 
 
@@ -794,7 +796,8 @@ h5,h6{font-size:1em;}
       "blog.id" : $("[name='blog.id']").val(),
       "nickname": $("[name='nickname']").val(),
       "email"   : $("[name='email']").val(),
-      "content" : $("[name='content']").val()
+      "content" : $("[name='content']").val(),
+      "parentCommentId" : $("[name='parentCommentId']").val()
     },function (responseTxt, statusTxt, xhr) {
 //        $(window).scrollTo($('#comment-container'),500);
       clearContent();

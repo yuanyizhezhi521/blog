@@ -22,6 +22,20 @@ public class Tcomment implements Serializable {
 
     private Long parentCommentId;
 
+    private Tuser user;
+
+    public Tuser getUser() {
+        return user;
+    }
+
+    public void setUser(Tuser user) {
+        this.user = user;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
     private static final long serialVersionUID = 1L;
 
     public Long getId() {

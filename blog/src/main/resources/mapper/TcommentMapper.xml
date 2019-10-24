@@ -12,34 +12,74 @@
     <result column="blog_id" jdbcType="BIGINT" property="blogId" />
     <result column="parent_comment_id" jdbcType="BIGINT" property="parentCommentId" />
   </resultMap>
+  <resultMap id="BaseResultMap1" type="xyz.xuexiblog.blog.pojp.Tcomment">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="admin_comment" jdbcType="BIT" property="adminComment" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="blog_id" jdbcType="BIGINT" property="blogId" />
+    <result column="parent_comment_id" jdbcType="BIGINT" property="parentCommentId" />
+    <association property="user" javaType="xyz.xuexiblog.blog.pojp.Tuser">
+      <id column="id" jdbcType="BIGINT" property="id" />
+      <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+      <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+      <result column="email" jdbcType="VARCHAR" property="email" />
+      <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+      <result column="password" jdbcType="VARCHAR" property="password" />
+      <result column="type" jdbcType="INTEGER" property="type" />
+      <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+      <result column="username" jdbcType="VARCHAR" property="username" />
+      <result column="img" jdbcType="VARCHAR" property="img" />
+      <result column="Identity" jdbcType="INTEGER" property="identity" />
+      <result column="phone" jdbcType="VARCHAR" property="phone" />
+      <result column="gender" jdbcType="INTEGER" property="gender" />
+      <result column="favor" jdbcType="VARCHAR" property="favor" />
+    </association>
+  </resultMap>
   <sql id="Base_Column_List">
     id, admin_comment, avatar, content, create_time, email, nickname, blog_id, parent_comment_id
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from t_comment
     where id = #{id,jdbcType=BIGINT}
   </select>
-    <select id="selectAll" resultType="xyz.xuexiblog.blog.pojp.Tcomment">
-      select
-      <include refid="Base_Column_List" />
-      from t_comment
-      where parent_comment_id is null
-    </select>
+  <select id="selectAll" resultType="xyz.xuexiblog.blog.pojp.Tcomment">
+    select
+    <include refid="Base_Column_List" />
+    from t_comment
+    where parent_comment_id is null
+  </select>
   <select id="selectAllCommentId" resultType="xyz.xuexiblog.blog.pojp.Tcomment">
     select
     <include refid="Base_Column_List" />
     from t_comment
     where parent_comment_id is not null
   </select>
-    <select id="selectblogId" resultType="xyz.xuexiblog.blog.pojp.Tcomment">
+  <select id="selectblogId" resultType="xyz.xuexiblog.blog.pojp.Tcomment">
       select
       id, admin_comment, avatar, content, create_time, email, nickname, blog_id, parent_comment_id
-      from t_comment where blog_id=#{id}
+      from t_comment where blog_id=#{id} and parent_comment_id is null;
     </select>
   <select id="selectparent" resultType="xyz.xuexiblog.blog.pojp.Tcomment">
     SELECT * FROM t_comment WHERE parent_comment_id=#{id}
+  </select>
+  <select id="selectparent_comment_id" resultMap="BaseResultMap1">
+SELECT
+  tc.*,
+  tu.*
+FROM
+  t_blog tb,
+  t_comment tc,
+  t_user tu
+WHERE tb.`id` = tc.`blog_id`
+  AND tb.`user_id` = tu.`id`
+  AND tc.`blog_id` = 31
+  AND tc.`parent_comment_id` IS NOT NULL
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from t_comment

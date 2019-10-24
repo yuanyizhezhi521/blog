@@ -20,4 +20,6 @@ public interface TcommentService {
     public List<Tcomment> selectAllCommentId();
     public List<Tcomment> selectblogId(Long id);
     public List<Tcomment> selectparent(Long id);
+
+    List<Tcomment> selectparent_comment_id(Long id);
 }

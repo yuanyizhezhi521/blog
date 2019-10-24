@@ -21,5 +21,6 @@ public interface TcommentMapper {
     public List<Tcomment> selectAll();
     public List<Tcomment> selectAllCommentId();
     public List<Tcomment> selectblogId(Long id);
+    public List<Tcomment> selectparent_comment_id(Long id);
     public List<Tcomment> selectparent(Long id);
 }

@@ -60,4 +60,9 @@ public class TcommentServiceImpl implements TcommentService {
     public List<Tcomment> selectparent(Long id) {
         return tcommentMapper.selectparent(id);
     }
+
+    @Override
+    public List<Tcomment> selectparent_comment_id(Long id) {
+        return tcommentMapper.selectparent_comment_id(id);
+    }
 }
